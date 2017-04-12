@@ -1,0 +1,51 @@
+#include <iostream>
+#include <time.h>
+#include <stdlib.h>
+#include  <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	    srand((unsigned int)time(0));
+		int Comb_count, sr, m, r, i, j, a[600], n, temp;
+		double q, b;
+		unsigned int search_time;
+		r=1;sr=0;
+		Comb_count = 0;
+		cout << "Enter no of element of array : ";
+		cin >> n;
+		while (r<=100)
+		{
+			unsigned int start_time = clock();
+			for (i = 1; i <= n; i++)
+			{
+				a[i] = rand()%100;
+			}
+
+			m = n;
+			m--;
+			while (m >= 1)
+			{
+				for (int i = 1; (i + m) <= n; i++)
+				{
+					sr++;
+					if (a[i] > a[i + m])
+					{
+						swap(a[i], a[i + m]);
+						Comb_count++;
+					}
+				}
+				m /= 1.2473309;
+			}
+			//cout<< Comb_count << " fer "<<endl;
+		r=r+1;
+		}
+q=(double) Comb_count /  100;
+b=(double) sr /  100;
+cout<<q <<" x "<<endl;
+cout<<b <<" x1 "<<endl;
+}
+
+
+	

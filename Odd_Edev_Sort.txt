@@ -1,0 +1,62 @@
+#include <iostream>
+#include <time.h>
+#include <stdlib.h>
+#include  <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+	    srand((unsigned int)time(0));
+		int Odd_even_count, sr, m, r, i, j, a[600], n, temp;
+		double q, b;
+		unsigned int search_time;
+		r=1;sr=0;
+		Odd_even_count = 0;
+		cout << "Enter no of element of array : ";
+		cin >> n;
+		while (r<=100)
+		{
+			for (i = 1; i <= n; i++)
+			{
+				a[i] = rand()%100;
+			}
+			Odd_even_count = 0;
+			for (int i = 0 ; i <= n ; i++)
+			{	
+				if (i & 1) // 'i' is odd 
+				{
+					for (int j = 2 ; j <= n ; j += 2)
+					{ 
+						sr++;	
+						if (a[j] <= a[j-1])
+						{
+							swap (a[j-1], a[j]) ;
+							Odd_even_count++;
+						}
+					}
+				}
+				else
+				{  
+					for (int j = 1 ; j <= n ; j += 2)
+					{
+						sr++;	
+						if (a[j] <= a[j-1])
+						{
+							swap (a[j-1], a[j]) ;
+							Odd_even_count++;
+						}
+					} 
+				}
+			}
+			//cout<<Odd_even_count<< " Vot "<<endl;
+			r=r+1;
+		}
+q=(double) Odd_even_count /  100;
+b=(double) sr /  100;
+cout<<q <<" x "<<endl;
+cout<<b <<" x1 "<<endl;
+}
+
+
+	

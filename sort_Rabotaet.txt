@@ -1,0 +1,150 @@
+#include <iostream>
+#include <time.h>
+#include <stdlib.h>
+#include  <cstdlib>
+
+using namespace std;
+
+
+class Sort
+{
+public:
+	int a[600], r, n, m, i, j, k, temp;
+	int Insertion_count, Comb_count, Odd_even_count;
+public:
+	void vvod()
+	{
+		cout << "Enter no of element of array : ";
+		cin >> n;
+	};
+	void massive()
+	{
+		srand((unsigned int)time(0));
+		// Создание массива
+		for (i = 1; i <= n; i++)
+		{
+			a[i] = rand()%100;
+		}
+	}
+};
+
+	class CombSort :public Sort
+	{
+	public:
+		void C_sort()
+		{
+			Comb_count = 0;
+			m = n;
+			m--;
+			while (m >= 1)
+			{
+				for (int i = 1; (i + m) <= n; i++)
+				{
+					if (a[i] > a[i + m])
+					{
+						swap(a[i], a[i + m]);
+						Comb_count++;
+					}
+				}
+				m /= 1.2473309;
+			}
+			cout<< Comb_count << " fer "<<endl;
+			
+		}
+	};
+
+class InsertionSort :public Sort
+	{
+	public:
+		void In_sort()
+		{
+			Insertion_count = 0;
+			for (i = 1; i <= n; i++)
+			{
+				for (j = i; j >= 1; j--)
+				{
+					if ( a[j] < a[j-1] )
+					{
+						temp = a[j];
+						a[j] = a[j-1];
+						a[j-1] = temp;
+						Insertion_count++;
+					}
+					else 
+						break;
+				}
+			}
+		cout<<Insertion_count <<" lil "<<endl;
+
+		}
+	};
+class OddEvenSort :public Sort
+	{
+	public:
+		void Odd_sort()
+		{
+			Odd_even_count = 0;
+			for (int i = 0 ; i <= n ; i++)
+			{
+				if (i & 1) // 'i' is odd 
+				{
+					for (int j = 2 ; j <= n ; j += 2)
+					{     
+						if (a[j] <= a[j-1])
+							swap (a[j-1], a[j]) ;
+						Odd_even_count++;
+					}
+				}
+				else
+				{  
+					for (int j = 1 ; j <= n ; j += 2)
+					{
+						if (a[j] <= a[j-1])
+							swap (a[j-1], a[j]) ;
+						Odd_even_count++;
+					} 
+				}
+			}
+			cout<<Odd_even_count<< " Vot "<<endl;
+			
+		}
+	};
+class Statistic :public Sort
+{
+public:
+	void srednee()
+	{
+		for (r = 1; r <=100; r++)
+		{
+			Odd_even_count++;
+			Insertion_count++;
+			Comb_count++;
+		}
+		Odd_even_count /= 100;
+		Insertion_count /= 100;
+		Comb_count /=100;
+	};
+};
+
+
+	int main()
+	{
+		int r;
+		InsertionSort x;
+		x.vvod();
+		x.massive();
+		x.In_sort();
+		
+
+		CombSort y; // Object
+		y.vvod();
+		y.massive();
+		y.C_sort();
+
+
+		OddEvenSort z;
+		z.vvod();
+		z.massive();
+		z.Odd_sort();
+
+	}
